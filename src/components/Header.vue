@@ -43,7 +43,7 @@ export default {
     // Skapa setup-funktion för att använda store och router i komponenten
     setup() {
         const authStore = useAuthStore(); // Använd autentiseringsstoren
-        const router = this.$router; // Använd router
+        const router = useRouter(); // Använd router
 
         // Funktion för att logga ut en användare
         const handleLogout = async () => {
