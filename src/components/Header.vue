@@ -4,7 +4,7 @@
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
                 <!-- Länk till startsidan/logga in -->
-                <router-link class="navbar-brand" to="/">VOFF&MJAU</router-link>
+                <router-link class="navbar-brand no-active" to="/">VOFF&MJAU</router-link>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -37,6 +37,7 @@
 <script>
 import { useAuthStore } from "../stores/auth"; // Importera store för autentisering
 import { useRouter } from "vue-router"; // Importera router
+import { computed } from "vue"; // Importera computed för att skapa beräknade egenskaper
 
 export default {
     name: "Header",
@@ -44,6 +45,9 @@ export default {
     setup() {
         const authStore = useAuthStore(); // Använd autentiseringsstoren
         const router = useRouter(); // Använd router
+
+        // Skapa en beräknad egenskap för att kolla om användaren är inloggad
+        const isLoggedIn = computed(() => authStore.isLoggedIn);
 
         // Funktion för att logga ut en användare
         const handleLogout = async () => {
@@ -56,7 +60,7 @@ export default {
         };
 
         return {
-            isLoggedIn: authStore.isLoggedIn, // Skicka med om användaren är inloggad eller inte
+            isLoggedIn, // Skicka med om användaren är inloggad eller inte
             handleLogout, // Skicka med funktionen för att logga ut användaren
         };
     },
@@ -80,12 +84,26 @@ li button {
     padding: 2px 10px 5px 10px;
 }
 
+/* Markera aktiv länk */
+.router-link-active {
+    font-weight: bold;
+    color: #000000;
+    background-color: #dadada;
+    border-radius: 5px;
+}
+
+.no-active {
+    background-color: #f0f0f0 !important;
+    font-weight: bold;
+}
+
 /* Media query för mindre skärmar */
 @media (max-width: 991px) {
     ul {
         margin-top: 2rem;
         background-color: #f0f0f0;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
     }
 
     li {
@@ -94,11 +112,13 @@ li button {
     }
 
     li a {
-        margin: 0.2rem 0;
+        margin: 0.8rem 0;
+        padding: 0.5rem 1rem;
     }
 
     li button {
-        margin: 1rem 0;
+        margin: 1.5rem 0;
+        padding: 0.4rem 1.5rem;
     }
 }
 </style>
