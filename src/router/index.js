@@ -19,7 +19,7 @@ const router = createRouter({
     },
     {
       path: '/add-product',
-      name: 'product',
+      name: 'addProduct',
       component: () => import('../views/AddProductView.vue'),
       meta: { requiresAuth: true } // Skyddad sida
     },
