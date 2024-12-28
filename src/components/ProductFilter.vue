@@ -1,9 +1,15 @@
 <template>
     <div class="row mb-4">
         <div class="col-md-4">
-            <!-- Sökfält, använd v-model för att binda värdet till search och skicka som event vid ändring -->
-            <input type="text" class="form-control" v-model="search" @input="$emit('search', search)"
-                placeholder="Sök efter produkter" />
+            <!-- Sökfält med ikon -->
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-search"></i> <!-- Bootstrap Ikon -->
+                </span>
+                <!-- Sökfält, v-model för att binda värdet till search och skicka som event vid ändring -->
+                <input type="text" class="form-control" v-model="search" @input="$emit('search', search)"
+                    placeholder="Sök efter produkter" />
+            </div>
         </div>
         <div class="col-md-4">
             <!-- Huvudkategori, v-model för att binda värdet till maincat och skicka som event vid ändring -->
@@ -53,7 +59,7 @@ export default {
             [...new Set(productStore.products.map((product) => product.subcategory))]
         );
 
-        // Skicka söksträngen som event
+        // Returnera data som komponenten behöver
         return {
             search,
             maincat,
