@@ -69,7 +69,7 @@ export default {
 
 <style scoped>
 /* Fixerad header */
-header {
+nav {
     height: 60px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #f0f0f0;
