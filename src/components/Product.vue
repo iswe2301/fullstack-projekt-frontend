@@ -14,11 +14,11 @@
     <!-- Knappar för redigering och radering -->
     <div class="product-actions">
         <!-- Skicka produktobjektet som event när knappen klickas -->
-        <button class="btn btn-warning btn-sm" @click="$emit('edit', product)">
+        <button class="btn btn-warning btn-sm bi bi-pencil" @click="$emit('edit', product)">
             Redigera
         </button>
         <!-- Skicka produktens id som event när knappen klickas -->
-        <button class="btn btn-danger btn-sm" @click="$emit('delete', product._id)">
+        <button class="btn btn-danger btn-sm bi bi-trash" @click="$emit('delete', product._id)">
             Radera
         </button>
     </div>
