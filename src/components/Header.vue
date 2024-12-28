@@ -14,18 +14,21 @@
                         <!-- Visa olika länkar beroende på om användaren är inloggad eller inte -->
                         <li class="nav-item" v-if="!isLoggedIn">
                             <!-- Visas vid utloggat läge -->
-                            <router-link class="nav-link" to="/">Logga in</router-link>
+                            <router-link class="nav-link bi bi-box-arrow-in-right" to="/" @click="closeMenu">Logga
+                                in</router-link>
                         </li>
                         <!-- Visas inloggade användare -->
                         <li class="nav-item" v-if="isLoggedIn">
-                            <router-link class="nav-link" to="/products">Produkter</router-link>
+                            <router-link class="nav-link" to="/products" @click="closeMenu">Produkter</router-link>
                         </li>
                         <li class="nav-item" v-if="isLoggedIn">
-                            <router-link class="nav-link" to="/add-product">Lägg till produkt</router-link>
+                            <router-link class="nav-link" to="/add-product" @click="closeMenu">Lägg till
+                                produkt</router-link>
                         </li>
                         <li class="nav-item" v-if="isLoggedIn">
                             <!-- Knapp för att logga ut användaren, anropar metod vid klick -->
-                            <button class="btn btn-primary" @click="handleLogout">Logga ut</button>
+                            <button class="btn btn-primary bi bi-box-arrow-right" @click="handleLogout">Logga
+                                ut</button>
                         </li>
                     </ul>
                 </div>
@@ -49,6 +52,14 @@ export default {
         // Skapa en beräknad egenskap för att kolla om användaren är inloggad
         const isLoggedIn = computed(() => authStore.isLoggedIn);
 
+        // Metod för att stänga menyn när en länk klickas
+        const closeMenu = () => {
+            const menu = document.querySelector('.navbar-collapse');
+            if (menu) {
+                menu.classList.remove('show');
+            }
+        };
+
         // Funktion för att logga ut en användare
         const handleLogout = async () => {
             try {
@@ -62,6 +73,7 @@ export default {
         return {
             isLoggedIn, // Skicka med om användaren är inloggad eller inte
             handleLogout, // Skicka med funktionen för att logga ut användaren
+            closeMenu, // Skicka med funktionen för att stänga menyn
         };
     },
 };
@@ -95,6 +107,11 @@ li button {
 .no-active {
     background-color: #f0f0f0 !important;
     font-weight: bold;
+}
+
+.bi-box-arrow-in-right:before,
+.bi-box-arrow-right:before {
+    margin-right: 0.5rem;
 }
 
 /* Media query för mindre skärmar */
