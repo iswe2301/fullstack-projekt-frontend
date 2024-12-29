@@ -147,5 +147,9 @@ img {
         margin: 1.5rem 0;
         padding: 0.4rem 1.5rem;
     }
+
+    img {
+        max-height: 60px;
+    }
 }
 </style>
