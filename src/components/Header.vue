@@ -4,7 +4,9 @@
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
                 <!-- Länk till startsidan/logga in -->
-                <router-link class="navbar-brand no-active" to="/">VOFF&MJAU</router-link>
+                <router-link class="navbar-brand no-active" to="/">
+                    <img src="../assets/voffmjaulogo1.png" alt="Logotyp Voff&Mjau">
+                </router-link>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -112,6 +114,14 @@ li button {
 .bi-box-arrow-in-right:before,
 .bi-box-arrow-right:before {
     margin-right: 0.5rem;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    max-height: 55px;
+    padding-top: 5px;
+    object-fit: cover;
 }
 
 /* Media query för mindre skärmar */
