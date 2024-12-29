@@ -84,7 +84,7 @@ export default {
 <style scoped>
 /* Fixerad header */
 nav {
-    height: 60px;
+    height: 80px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #f0f0f0;
 }
@@ -119,7 +119,7 @@ li button {
 img {
     width: 100%;
     height: auto;
-    max-height: 55px;
+    max-height: 70px;
     padding-top: 5px;
     object-fit: cover;
 }
