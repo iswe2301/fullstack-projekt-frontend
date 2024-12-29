@@ -3,8 +3,12 @@
         <!-- Bootstrapklasser för styling av header/nav -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
-                <!-- Länk till startsidan/logga in -->
-                <router-link class="navbar-brand no-active" to="/">
+                <!-- Länk till startsidan/logga in för utloggade användare -->
+                <router-link v-if="!isLoggedIn" class="navbar-brand no-active" to="/">
+                    <img src="../assets/voffmjaulogo1.png" alt="Logotyp Voff&Mjau">
+                </router-link>
+                <!-- Länk till startsidan/produkter för inloggade användare -->
+                <router-link v-if="isLoggedIn" class="navbar-brand no-active" to="/products">
                     <img src="../assets/voffmjaulogo1.png" alt="Logotyp Voff&Mjau">
                 </router-link>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
