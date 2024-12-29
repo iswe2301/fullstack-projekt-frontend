@@ -32,7 +32,7 @@ main {
   min-height: 80vh;
   width: 100%;
   max-width: 800px;
-  margin: 60px auto 2rem auto;
+  margin: 80px auto 2rem auto;
   padding: 1rem;
 }
 </style>
