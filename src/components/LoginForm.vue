@@ -22,7 +22,8 @@
             </div>
         </div>
         <!-- Knapp för att logga in, inaktiverad om formuläret inte är korrekt ifyllt eller om inloggningen pågår -->
-        <button type="submit" class="btn btn-primary w-100" :disabled="loading || !!emailError || !!passwordError">
+        <button type="submit" class="btn btn-primary w-100 bi bi-box-arrow-in-right"
+            :disabled="loading || !!emailError || !!passwordError">
             {{ loading ? "Loggar in..." : "Logga in" }}
         </button>
         <!-- Visa eventuellt felmeddelande från inloggningen -->
@@ -103,5 +104,9 @@ export default {
 <style scoped>
 .text-danger {
     font-size: 0.9rem;
+}
+
+.bi-box-arrow-in-right:before {
+    margin-right: 0.5rem;
 }
 </style>

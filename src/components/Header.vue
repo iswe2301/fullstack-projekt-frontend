@@ -16,7 +16,7 @@
                         <!-- Visa olika länkar beroende på om användaren är inloggad eller inte -->
                         <li class="nav-item" v-if="!isLoggedIn">
                             <!-- Visas vid utloggat läge -->
-                            <router-link class="nav-link bi bi-box-arrow-in-right" to="/" @click="closeMenu">Logga
+                            <router-link class="nav-link" to="/" @click="closeMenu">Logga
                                 in</router-link>
                         </li>
                         <!-- Visas inloggade användare -->
@@ -111,7 +111,6 @@ li button {
     font-weight: bold;
 }
 
-.bi-box-arrow-in-right:before,
 .bi-box-arrow-right:before {
     margin-right: 0.5rem;
 }
