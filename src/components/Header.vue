@@ -86,7 +86,7 @@ export default {
 nav {
     height: 80px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #f0f0f0;
+    background-color: #eee4d2;
 }
 
 li a {
@@ -100,15 +100,14 @@ li button {
 
 /* Markera aktiv länk */
 .router-link-active {
-    font-weight: bold;
+    font-weight: 600;
     color: #000000;
-    background-color: #dadada;
+    background-color: #d8ccb5;
     border-radius: 5px;
 }
 
 .no-active {
-    background-color: #f0f0f0 !important;
-    font-weight: bold;
+    background-color: #eee4d2 !important;
 }
 
 .bi-box-arrow-right:before {
@@ -127,7 +126,7 @@ img {
 @media (max-width: 991px) {
     ul {
         margin-top: 2rem;
-        background-color: #f0f0f0;
+        background-color: #eee4d2;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         padding: 2rem;
     }
