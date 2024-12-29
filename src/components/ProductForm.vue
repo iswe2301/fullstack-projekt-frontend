@@ -7,14 +7,16 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Namn</label>
                 <!-- Input-fält för namn, v-model för att binda värdet till localProduct.name -->
-                <input type="text" id="name" class="form-control" v-model="localProduct.name">
+                <input type="text" id="name" class="form-control" v-model="localProduct.name"
+                    placeholder="Ange produktnamn">
                 <!-- Visa felmeddelande om namnet är tomt -->
                 <small v-if="errors.name" class="text-danger">{{ errors.name }}</small>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Beskrivning</label>
                 <!-- Textarea för beskrivning, v-model för att binda värde till localProduct.description -->
-                <textarea id="description" class="form-control" v-model="localProduct.description" rows="5"></textarea>
+                <textarea id="description" class="form-control" v-model="localProduct.description" rows="5"
+                    placeholder="Ange en beskrivning av produkten..."></textarea>
                 <!-- Visa felmeddelande om beskrivningen är tomt eller för lång -->
                 <small v-if="errors.description" class="text-danger">{{ errors.description
                     }}</small>
