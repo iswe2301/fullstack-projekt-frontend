@@ -33,7 +33,7 @@
                         </li>
                         <li class="nav-item" v-if="isLoggedIn">
                             <!-- Knapp för att logga ut användaren, anropar metod vid klick -->
-                            <button class="btn btn-primary bi bi-box-arrow-right" @click="handleLogout">Logga
+                            <button class="btn btn-primary bi bi-box-arrow-right" @click="logoutAndCloseMenu">Logga
                                 ut</button>
                         </li>
                     </ul>
@@ -76,10 +76,17 @@ export default {
             }
         };
 
+        // Funktion för att logga ut och stänga menyn
+        const logoutAndCloseMenu = () => {
+            handleLogout();
+            closeMenu();
+        };
+
         return {
             isLoggedIn, // Skicka med om användaren är inloggad eller inte
             handleLogout, // Skicka med funktionen för att logga ut användaren
             closeMenu, // Skicka med funktionen för att stänga menyn
+            logoutAndCloseMenu, // Skicka med funktionen för att logga ut och stänga menyn
         };
     },
 };
