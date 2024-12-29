@@ -4,8 +4,14 @@
         <div v-if="deleteMessage" ref="deleteMessageRef" class="alert alert-success text-center" role="alert">
             {{ deleteMessage }}
         </div>
+
+        <!-- Om inga produkter finns, visa felmeddelande -->
+        <div v-if="products.length === 0" class="text-center mt-4">
+            Inga produkter hittades...
+        </div>
+
         <!-- Lista över produkter -->
-        <ul class="list-group">
+        <ul v-else class="list-group">
             <!-- Loopa igenom paginerade produkter och skapa en produktkomponent för varje produkt -->
             <li v-for="product in products" :key="product._id" class="list-group-item">
                 <!-- Skicka produktobjektet som prop till produktkomponenten, lyssna på edit- och delete-events -->
