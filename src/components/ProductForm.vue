@@ -64,10 +64,13 @@
                 <small v-if="errors.price" class="text-danger">{{ errors.price }}</small>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary me-2">
                     <!-- Ändra text och ikon beroende på om vi redigerar eller lägger till produkt -->
                     <i class="bi" :class="isEditing ? 'bi-check-square' : 'bi-plus-circle'"></i>
                     {{ isEditing ? "Spara ändringar" : "Lägg till produkt" }}
+                </button>
+                <button type="button" class="btn btn-secondary" @click="cancel">
+                    <i class="bi bi-x-circle"></i> Avbryt
                 </button>
             </div>
         </form>
@@ -160,6 +163,11 @@ export default {
             }
         };
 
+        // Avbryt formulär genom att navigera till startsidan (produkter)
+        const cancel = () => {
+            router.push("/products");
+        };
+
         // Returnera data och metoder som komponenten behöver
         return {
             localProduct,
@@ -167,6 +175,7 @@ export default {
             categories,
             subcategories,
             handleSubmit,
+            cancel,
         };
     },
 };
