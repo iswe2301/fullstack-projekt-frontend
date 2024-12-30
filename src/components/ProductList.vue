@@ -1,7 +1,7 @@
 <template>
     <div>
-        <!-- Notifiering för raderad produkt -->
-        <div v-if="deleteMessage" ref="deleteMessageRef" class="alert alert-success text-center" role="alert">
+        <!-- Notifiering för raderad produkt, visas om deleteMessage är satt -->
+        <div v-if="deleteMessage" ref="deleteMessageRef" :class="alertClass" role="alert">
             {{ deleteMessage }}
         </div>
 
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { ref, nextTick } from "vue"; // Importera ref och nextTick
+import { ref, nextTick, computed } from "vue"; // Importera ref och nextTick
 import { useProductStore } from "@/stores/product"; // Importera produktstoren
 import { useRouter } from "vue-router"; // Importera useRouter för att navigera mellan sidor
 import Product from "@/components/Product.vue"; // Importera produktkomponenten
@@ -39,6 +39,7 @@ export default {
         const router = useRouter(); // Använd Vue Router för navigering
         const productStore = useProductStore(); // Använd produktstoren
         const deleteMessage = ref(""); // Meddelande för raderad produkt
+        const isError = ref(false); // Referens för att visa felmeddelande, satt till false som standard
         const deleteMessageRef = ref(null); // Referens till meddelandet
 
         // Metod för att redigera en produkt
@@ -46,6 +47,12 @@ export default {
             // Navigera till sidan för att redigera produkten med produktens id som query-parameter
             router.push({ name: "addProduct", query: { productId: product._id } });
         };
+
+        // Beräknad egenskap för att bestämma vilken CSS-klass som ska användas för alerten
+        const alertClass = computed(() =>
+            // Returnera "alert alert-danger text-center" om isError är true, annars "alert alert-success text-center"
+            isError.value ? "alert alert-danger text-center" : "alert alert-success text-center"
+        );
 
         // Metod för att radera en produkt
         const deleteProduct = async (productId) => {
@@ -59,6 +66,7 @@ export default {
                 await productStore.deleteProduct(productId);
                 // Visa ett meddelande om att produkten raderats
                 deleteMessage.value = "Produkten har raderats.";
+                isError.value = false; // Dölj felmeddelande
                 // Vänta på att DOM uppdateras innan skrollning sker
                 await nextTick();
                 // Skrolla till meddelandet
@@ -76,6 +84,8 @@ export default {
                 }, 3000);
             } catch (error) {
                 console.error("Fel vid radering:", error.message);
+                deleteMessage.value = "Något gick fel. Försök igen senare.";
+                isError.value = true; // Visa felmeddelande
             }
         };
 
@@ -84,7 +94,8 @@ export default {
             editProduct,
             deleteProduct,
             deleteMessage,
-            deleteMessageRef
+            deleteMessageRef,
+            alertClass,
         };
     },
 };
